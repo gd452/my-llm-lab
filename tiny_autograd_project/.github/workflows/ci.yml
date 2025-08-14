@@ -1,0 +1,18 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -U pip && pip install -r requirements.txt
+      - name: Basic lint check (errors only)
+        run: ruff check .
+      - name: Run tests
+        run: pytest -q
+      # 선택적 - 더 엄격한 체크가 필요하면 주석 해제
+      # - run: black --check .
+      # - run: mypy .

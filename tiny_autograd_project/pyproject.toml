@@ -1,0 +1,31 @@
+[tool.black]
+line-length = 100
+target-version = ["py311"]
+
+[tool.ruff]
+line-length = 100
+extend-exclude = ["*.ipynb"]
+
+[tool.ruff.lint]
+# 필수적인 오류만 체크 (개인 프로젝트용 간소화 설정)
+select = [
+    "E",    # pycodestyle 오류 (문법 오류 등)
+    "F",    # pyflakes (undefined names, imports 등)
+]
+ignore = [
+    "E501",  # 라인 길이 제한 무시
+    "F401",  # 사용하지 않는 import 허용 (학습용)
+    "F811",  # 재정의 허용 (노트북에서 자주 발생)
+    "F841",  # 사용하지 않는 변수 허용 (예제 코드)
+]
+
+[tool.mypy]
+python_version = "3.11"
+ignore_missing_imports = true
+warn_unused_ignores = true
+warn_redundant_casts = true
+warn_unused_configs = true
+strict_optional = true
+
+[tool.pytest.ini_options]
+addopts = "-q"
