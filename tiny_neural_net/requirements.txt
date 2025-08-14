@@ -1,0 +1,6 @@
+numpy>=1.26
+pytest>=8.2
+jupyter>=1.0.0
+notebook>=7.0.0
+matplotlib>=3.5.0
+rich>=13.7
