@@ -21,7 +21,7 @@
 
 ```
 tiny_neural_net/
-├── 10_core/
+├── _10_core/              # 핵심 구현 (밑줄로 시작해서 import 용이)
 │   └── nn_tiny/
 │       ├── neuron.py      # 단일 뉴런 구현
 │       ├── layer.py       # 레이어 (뉴런 집합)
@@ -33,8 +33,7 @@ tiny_neural_net/
 ├── tests/
 │   └── test_nn.py        # 단위 테스트
 ├── 50_eval/
-│   ├── xor_demo.py       # XOR 문제 해결
-│   └── visualize.py      # 결정 경계 시각화
+│   └── xor_demo.py       # XOR 문제 해결
 └── study_notes/
     └── nn_concepts.md    # 핵심 개념 정리
 ```

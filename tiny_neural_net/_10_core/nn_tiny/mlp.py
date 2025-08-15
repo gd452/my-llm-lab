@@ -15,7 +15,7 @@
           └─→ [h4] ─┴─→ [h8]
 """
 
-from layer import Layer
+from .layer import Layer
 
 
 class MLP:

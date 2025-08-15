@@ -6,11 +6,20 @@
 
 import sys
 import os
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# 프로젝트 루트 경로 추가
+project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, project_root)
+# my-llm-lab 루트 경로 추가 (tiny_autograd_project 접근용)
+llm_lab_root = os.path.dirname(project_root)
+sys.path.insert(0, llm_lab_root)
 
 import pytest
 import math
+
+# Import with proper module paths
 from tiny_autograd_project._10_core.autograd_tiny.value import Value
+
+# Now we can use normal imports
 from _10_core.nn_tiny.neuron import Neuron
 from _10_core.nn_tiny.layer import Layer
 from _10_core.nn_tiny.mlp import MLP

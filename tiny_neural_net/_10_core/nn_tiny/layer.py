@@ -14,7 +14,7 @@
     출력: [neuron1(x), neuron2(x), ..., neuronm(x)]
 """
 
-from neuron import Neuron
+from .neuron import Neuron
 
 
 class Layer:
