@@ -49,6 +49,59 @@ class Value:
     def __rmul__(self, other: float | Value) -> Value:
         return self.__mul__(other)
 
+    
+    # 연습: 빼기와 나누기 구현
+    def __sub__(self, other):
+        # TODO: 빼기 구현
+        # 힌트: a - b = a + (-b)
+        other = other if isinstance(other, Value) else Value(other)
+        out = Value(self.data - other.data, {self, other})
+
+        def _backward() -> None:
+            self.grad += out.grad * 1.0
+            other.grad += out.grad * -1.0
+
+        out._backward = _backward
+        return out
+    
+    def __rsub__(self, other):
+        return self.__sub__(other)
+
+    def __truediv__(self, other):
+        # TODO: 나누기 구현
+        # 힌트: a / b의 미분
+        # d(a/b)/da = 1/b
+        # d(a/b)/db = -a/b^2
+        other = other if isinstance(other, Value) else Value(other)
+        out = Value(self.data / other.data, {self, other})
+
+        def _backward() -> None:
+            self.grad += out.grad * 1.0 / other.data
+            other.grad += out.grad * -self.data / other.data**2
+
+        out._backward = _backward
+        return out
+
+    def __rtruediv__(self, other):
+        return self.__truediv__(other)
+
+    def __pow__(self, other: float | int) -> Value:
+        """거듭제곱 연산: self ** other
+        
+        거듭제곱의 미분 규칙:
+        - f(x) = x^n 일 때, f'(x) = n * x^(n-1)
+        - 따라서 d(self^other)/d(self) = other * self^(other-1)
+        """
+        assert isinstance(other, (int, float)), "지수는 숫자여야 합니다"
+        out = Value(self.data ** other, {self}, f"**{other}")
+
+        def _backward() -> None:
+            # 거듭제곱의 미분: d(x^n)/dx = n * x^(n-1)
+            self.grad += other * (self.data ** (other - 1)) * out.grad
+
+        out._backward = _backward
+        return out
+
     def tanh(self) -> Value:
         t = math.tanh(self.data)
         out = Value(t, {self}, "tanh")
