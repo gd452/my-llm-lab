@@ -19,21 +19,23 @@
   - 위상 정렬과 Chain Rule
 
 #### ✅ Day 1.5: Neural Network 기초
-- **상태**: 생성 완료, 학습 대기
-- **폴더**: `tiny_neural_net/`
+- **상태**: 완료
+- **폴더**: `projects/day1_5_neural_net/`
 - **내용**:
   - Neuron, Layer, MLP 구현
   - XOR 문제 해결
   - 경사하강법과 최적화
   - 활성화 함수와 손실 함수
 
-#### ⏳ Day 2: 벡터/행렬 연산
-- **상태**: 대기
-- **예정 내용**:
+#### ✅ Day 2: 벡터/행렬 연산
+- **상태**: 생성 완료, 학습 대기
+- **폴더**: `projects/day2_vector_matrix/`
+- **내용**:
   - NumPy로 효율적인 연산
   - Batch 처리
   - Softmax와 CrossEntropy
   - 행렬곱과 Broadcasting
+  - Mini MNIST 분류기
 
 #### ⏳ Day 3: Attention 메커니즘
 - **상태**: 대기
@@ -125,14 +127,15 @@
 
 ## 📝 진행 상황
 - [x] Day 1: Autograd 완료
-- [x] Day 1.5: Neural Network 프로젝트 생성
-- [ ] Day 1.5: Neural Network 학습 및 구현
-- [ ] Day 2-5: 대기
+- [x] Day 1.5: Neural Network 완료
+- [x] Day 2: Vector/Matrix Operations 프로젝트 생성
+- [ ] Day 2: Vector/Matrix 학습 및 구현
+- [ ] Day 3-5: 대기
 - [ ] Week 2-4: 대기
 
 ## 🚦 다음 단계
-현재 Day 1.5 (Neural Network) 학습 중. 
-`tiny_neural_net/notebooks/nn_tutorial.ipynb`를 완료한 후 Day 2로 진행 예정.
+현재 Day 2 (Vector/Matrix Operations) 학습 준비 완료.
+`projects/day2_vector_matrix/study_notes/`를 학습한 후 Day 3로 진행 예정.
 
 ---
 
