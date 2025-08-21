@@ -28,7 +28,7 @@
   - 활성화 함수와 손실 함수
 
 #### ✅ Day 2: 벡터/행렬 연산
-- **상태**: 생성 완료, 학습 대기
+- **상태**: 완료
 - **폴더**: `projects/day2_vector_matrix/`
 - **내용**:
   - NumPy로 효율적인 연산
@@ -37,13 +37,15 @@
   - 행렬곱과 Broadcasting
   - Mini MNIST 분류기
 
-#### ⏳ Day 3: Attention 메커니즘
-- **상태**: 대기
-- **예정 내용**:
+#### ✅ Day 3: Attention 메커니즘
+- **상태**: 생성 완료, 학습 대기
+- **폴더**: `projects/day3_attention/`
+- **내용**:
   - Self-Attention 구현
   - Query, Key, Value 이해
   - Scaled Dot-Product Attention
   - Multi-Head Attention
+  - Positional Encoding
 
 #### ⏳ Day 4: Transformer Block
 - **상태**: 대기
@@ -128,14 +130,15 @@
 ## 📝 진행 상황
 - [x] Day 1: Autograd 완료
 - [x] Day 1.5: Neural Network 완료
-- [x] Day 2: Vector/Matrix Operations 프로젝트 생성
-- [ ] Day 2: Vector/Matrix 학습 및 구현
-- [ ] Day 3-5: 대기
+- [x] Day 2: Vector/Matrix Operations 완료
+- [x] Day 3: Attention Mechanism 프로젝트 생성
+- [ ] Day 3: Attention 학습 및 구현
+- [ ] Day 4-5: 대기
 - [ ] Week 2-4: 대기
 
 ## 🚦 다음 단계
-현재 Day 2 (Vector/Matrix Operations) 학습 준비 완료.
-`projects/day2_vector_matrix/study_notes/`를 학습한 후 Day 3로 진행 예정.
+현재 Day 3 (Attention Mechanism) 학습 준비 완료.
+`projects/day3_attention/study_notes/`를 학습한 후 Day 4로 진행 예정.
 
 ---
 
