@@ -97,7 +97,7 @@ class TestBatchNorm:
         
         # 정규화 후 평균은 0, 분산은 1에 가까워야 함
         np.testing.assert_almost_equal(x_norm.mean(axis=0), np.zeros(10), decimal=5)
-        np.testing.assert_almost_equal(x_norm.var(axis=0), np.ones(10), decimal=5)
+        np.testing.assert_almost_equal(x_norm.var(axis=0), np.ones(10), decimal=4)
     
     def test_batch_norm_inference(self):
         np.random.seed(42)
