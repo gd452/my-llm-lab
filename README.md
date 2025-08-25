@@ -38,7 +38,7 @@
   - Mini MNIST 분류기
 
 #### ✅ Day 3: Attention 메커니즘
-- **상태**: 생성 완료, 학습 대기
+- **상태**: 완료
 - **폴더**: `projects/day3_attention/`
 - **내용**:
   - Self-Attention 구현
@@ -47,42 +47,49 @@
   - Multi-Head Attention
   - Positional Encoding
 
-#### ⏳ Day 4: Transformer Block
-- **상태**: 대기
-- **예정 내용**:
-  - 전체 Transformer 아키텍처
+#### ✅ Day 4: Transformer Architecture
+- **상태**: 완료
+- **폴더**: `projects/day4_transformer/`
+- **내용**:
+  - 전체 Transformer 아키텍처 구현
+  - Encoder와 Decoder 구조
+  - Multi-Head Attention 통합
   - Positional Encoding
   - Layer Normalization
-  - Feed-Forward Network
+  - Feed-Forward Networks
+  - PyTorch로 실제 구현
 
-#### ⏳ Day 5: 토크나이저와 학습
-- **상태**: 대기
-- **예정 내용**:
-  - BPE 토크나이저
-  - 텍스트 전처리
-  - 학습 루프 구현
-  - 간단한 텍스트 생성
+### Week 2: 실전 LLM 구현
 
-### Week 2: Mini GPT 구현
+#### 🚀 miniGPT - nanoGPT 스타일 구현
+- **상태**: 진행중
+- **폴더**: `projects/mini_gpt/`
+- **핵심 구현**:
+  - Karpathy's nanoGPT 스타일 (~200줄)
+  - Self-Attention, Causal Masking
+  - Character-level 언어 모델
+  - 셰익스피어 텍스트 학습
+  - Attention 패턴 시각화
+- **실행**: `cd projects/mini_gpt && python train.py`
 
-#### ⏳ Day 6-10: Mini GPT
-- **예정 내용**:
-  - GPT 아키텍처 구현
-  - Causal Attention
-  - 텍스트 생성 전략
-  - Temperature, Top-k, Top-p
-  - 작은 데이터셋으로 학습
+#### 🤖 오픈소스 LLM 실습 - Qwen2
+- **상태**: 진행중
+- **폴더**: `projects/llm_practice/`
+- **실습 내용**:
+  - Ollama로 로컬 LLM 실행
+  - Streaming 응답 구현
+  - RAG 시스템 기초
+  - Fine-tuning with LoRA
+  - 코드 리뷰/번역/요약 봇
+- **실행**: `ollama run qwen2:7b`
 
-### Week 3: 파인튜닝과 응용
+### Week 3: 실무 프로젝트
 
-#### ⏳ Day 11-15: 챗봇 만들기
-- **예정 내용**:
-  - Instruction Tuning
-  - Prompt Engineering
-  - 대화 컨텍스트 관리
-  - 간단한 챗봇 구현
-
-### Week 4: 프로젝트
+#### 📝 나만의 메모 비서
+- **계획중**: 개인 노트 + Qwen = AI 어시스턴트
+- Vector DB로 지식 관리
+- Context-aware 응답
+- 실시간 메모 검색 & 요약
 
 #### ⏳ Day 16-20: 도메인 특화 LLM
 - **예정 내용**:
@@ -128,17 +135,34 @@
 - [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
 
 ## 📝 진행 상황
-- [x] Day 1: Autograd 완료
-- [x] Day 1.5: Neural Network 완료
-- [x] Day 2: Vector/Matrix Operations 완료
-- [x] Day 3: Attention Mechanism 프로젝트 생성
-- [ ] Day 3: Attention 학습 및 구현
-- [ ] Day 4-5: 대기
-- [ ] Week 2-4: 대기
 
-## 🚦 다음 단계
-현재 Day 3 (Attention Mechanism) 학습 준비 완료.
-`projects/day3_attention/study_notes/`를 학습한 후 Day 4로 진행 예정.
+### ✅ Week 1: 기초 완료
+- [x] Day 1: Autograd 구현
+- [x] Day 1.5: Neural Network 기초
+- [x] Day 2: Vector/Matrix Operations
+- [x] Day 3: Attention Mechanism
+- [x] Day 4: Transformer Architecture (PyTorch)
+
+### 🚀 Week 2: 실전 구현 (진행중)
+- [x] miniGPT 구현 (nanoGPT style)
+- [ ] Qwen2 모델 실습
+- [ ] Fine-tuning & LoRA
+- [ ] RAG 시스템 구축
+
+### 📅 Week 3: 프로젝트 (예정)
+- [ ] 나만의 메모 비서 만들기
+
+## 🚦 현재 진행
+**miniGPT 학습중** → Qwen2 실습 예정
+```bash
+# miniGPT 학습
+cd projects/mini_gpt && python train.py
+
+# Qwen2 실습
+ollama pull qwen2:7b
+cd projects/llm_practice/01_ollama
+python basic_chat.py
+```
 
 ---
 
