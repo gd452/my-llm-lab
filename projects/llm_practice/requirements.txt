@@ -1,0 +1,39 @@
+# LLM Practice 필수 패키지
+
+# LangChain 관련
+langchain==0.1.0
+langchain-community==0.0.10
+
+# 임베딩 및 벡터 DB
+sentence-transformers==2.2.2
+chromadb==0.4.22
+faiss-cpu==1.7.4
+
+# LLM 파인튜닝
+transformers==4.36.2
+peft==0.7.1
+accelerate==0.25.0
+bitsandbytes==0.41.3
+
+# 데이터 처리
+datasets==2.16.1
+pandas==2.1.4
+numpy==1.24.3
+
+# ML 관련
+scikit-learn==1.3.2
+torch==2.1.2
+
+# 유틸리티
+python-dotenv==1.0.0
+pydantic==2.5.3
+requests==2.31.0
+tqdm==4.66.1
+
+# Jupyter 노트북
+jupyter==1.0.0
+ipykernel==6.28.0
+ipywidgets==8.1.1
+
+# 선택 사항 (GPU 사용시)
+# torch==2.1.2+cu118  # CUDA 11.8 버전용

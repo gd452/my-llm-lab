@@ -1,4 +1,4 @@
-# Ollama + Qwen 설정 가이드
+# Ollama + Qwen3 설정 가이드
 
 ## 1. Ollama 설치
 
@@ -24,11 +24,23 @@ curl -fsSL https://ollama.ai/install.sh | sh
 
 ## 2. Qwen 모델 설치
 
+### Qwen3 (최신 - 추천)
 ```bash
-# 모델 크기별 선택
-ollama pull qwen2:0.5b    # 500MB - 테스트용
-ollama pull qwen2:1.5b    # 1.5GB - 일반 작업
-ollama pull qwen2:7b      # 4GB - 고품질 (추천)
+# Qwen3 모델 (2025년 4월 출시)
+ollama pull qwen3:4b       # 4B - Qwen2.5-72B 수준 성능
+ollama pull qwen3:8b       # 8B - 범용 작업
+ollama pull qwen3:30b-a3b  # 30B MoE - 고성능 (3B 활성화)
+
+# 특별 기능: Thinking Mode 지원
+# /think와 /no_think로 동적 전환 가능
+```
+
+### Qwen2.5 (안정적)
+```bash
+# Qwen2.5 모델 (코딩 특화)
+ollama pull qwen2.5-coder:7b   # 코딩 전문
+ollama pull qwen2.5:7b         # 범용
+ollama pull qwen2.5:14b        # 고성능
 
 # 설치된 모델 확인
 ollama list
@@ -38,14 +50,14 @@ ollama list
 
 ```bash
 # 대화형 실행
-ollama run qwen2:7b
+ollama run qwen3:8b
 
 # API 서버 실행 (백그라운드)
 ollama serve
 
 # API 테스트
 curl http://localhost:11434/api/generate -d '{
-  "model": "qwen2:7b",
+  "model": "qwen3:8b",
   "prompt": "Hello, how are you?",
   "stream": false
 }'
@@ -58,11 +70,15 @@ curl http://localhost:11434/api/generate -d '{
 import requests
 import json
 
-def chat_with_qwen(prompt):
+def chat_with_qwen(prompt, thinking_mode=False):
+    model_prompt = prompt
+    if thinking_mode:
+        model_prompt = f"/think {prompt}"
+    
     response = requests.post('http://localhost:11434/api/generate',
         json={
-            "model": "qwen2:7b",
-            "prompt": prompt,
+            "model": "qwen3:8b",
+            "prompt": model_prompt,
             "stream": False
         })
     return response.json()['response']
@@ -91,7 +107,7 @@ export OLLAMA_MODELS=/path/to/models
 ```bash
 # Modelfile 생성
 cat > Modelfile << EOF
-FROM qwen2:7b
+FROM qwen3:8b
 
 # 시스템 프롬프트 설정
 SYSTEM """
@@ -117,19 +133,19 @@ ollama run my-qwen
 ### 메모리 부족
 ```bash
 # 더 작은 모델 사용
-ollama pull qwen2:0.5b
+ollama pull qwen3:4b       # 작지만 강력함
 
 # 또는 양자화 모델
-ollama pull qwen2:7b-q4_0  # 4-bit 양자화
+ollama pull qwen3:8b-q4_0  # 4-bit 양자화
 ```
 
 ### 속도 개선
 ```bash
 # GPU 사용 확인
-ollama run qwen2:7b --verbose
+ollama run qwen3:8b --verbose
 
 # CPU 전용 모드
-OLLAMA_NUM_GPU=0 ollama run qwen2:7b
+OLLAMA_NUM_GPU=0 ollama run qwen3:8b
 ```
 
 ### 포트 변경
@@ -141,7 +157,7 @@ OLLAMA_HOST=0.0.0.0:8080 ollama serve
 ## 📝 체크리스트
 
 - [ ] Ollama 설치 완료
-- [ ] Qwen2 모델 다운로드
+- [ ] Qwen3 모델 다운로드
 - [ ] 첫 대화 테스트
 - [ ] Python API 연동
 - [ ] 커스텀 모델 생성

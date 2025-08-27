@@ -11,7 +11,7 @@ import time
 class QwenChat:
     """Qwen 모델과 대화하는 클래스"""
     
-    def __init__(self, model: str = "qwen2:7b", base_url: str = "http://localhost:11434"):
+    def __init__(self, model: str = "qwen3:8b", base_url: str = "http://localhost:11434"):
         self.model = model
         self.base_url = base_url
         self.conversation_history = []
@@ -31,8 +31,12 @@ class QwenChat:
             return False
     
     def chat(self, prompt: str, temperature: float = 0.7, 
-             system_prompt: Optional[str] = None) -> str:
+             system_prompt: Optional[str] = None, thinking_mode: bool = False) -> str:
         """단순 대화 (컨텍스트 없음)"""
+        
+        # Qwen3 Thinking Mode 지원
+        if thinking_mode:
+            prompt = f"/think {prompt}"
         
         # 시스템 프롬프트 추가
         if system_prompt:
@@ -165,17 +169,22 @@ Summary:"""
 def demo_basic_usage():
     """기본 사용법 데모"""
     
-    print("🤖 Qwen Chat Demo")
+    print("🤖 Qwen3 Chat Demo")
     print("=" * 50)
     
     # 초기화
-    chat = QwenChat(model="qwen2:7b")  # 모델 크기 선택
+    chat = QwenChat(model="qwen3:8b")  # Qwen3 최신 모델
     
     # 1. 단순 대화
     print("\n1. 단순 대화:")
     response = chat.chat("What is the capital of France?")
     print(f"Q: What is the capital of France?")
     print(f"A: {response}")
+    
+    # 1-2. Thinking Mode (Qwen3 특별 기능)
+    print("\n1-2. Thinking Mode (심층 추론):")
+    response = chat.chat("피보나치 수열의 10번째 항을 구하고 과정을 설명해줘", thinking_mode=True)
+    print(f"A: {response[:300]}...")
     
     # 2. 시스템 프롬프트 사용
     print("\n2. 시스템 프롬프트 (해적 스타일):")

@@ -1,158 +1,163 @@
-# Week 2: 오픈소스 LLM 실습 - Qwen 모델
+# LLM 실습 프로젝트
 
-## 🎯 목표
-**실무에서 바로 사용 가능한 LLM 활용 능력 습득**
+실무에서 바로 사용 가능한 LLM 활용 기법을 배워봅니다.
 
-## 📊 Qwen 모델 선택 이유
+## 🌟 하이라이트
 
-1. **최신 성능**: GPT-3.5 수준 또는 그 이상
-2. **한국어 지원**: 뛰어난 다국어 능력
-3. **다양한 크기**: 0.5B ~ 72B (용도별 선택 가능)
-4. **상업적 사용**: Apache 2.0 라이선스
+- **Qwen3 최신 모델** 활용 (2025년 4월 출시)
+- **Thinking Mode** 지원으로 심층 추론 가능
+- **실무 중심** 코드와 예제
+- **단계별** 학습 커리큘럼
 
-## 🔧 실습 구성
+## 학습 목표
 
-### Phase 1: Local LLM 실행 (Ollama)
-```bash
-# Qwen 모델 설치 및 실행
-ollama pull qwen2:0.5b    # 가장 작은 모델 (빠른 테스트)
-ollama pull qwen2:7b      # 실용적 크기
-ollama run qwen2:7b
-```
+1. **Ollama + Qwen3** 로컬 LLM 설정 및 활용
+2. **LangChain** 프레임워크로 체인 구성
+3. **Embeddings** 벡터화와 유사도 검색
+4. **RAG** 기반 지식 활용 시스템
+5. **Fine-tuning** LoRA로 효율적 커스터마이징
+6. **Agents** ReAct 프레임워크 자율 에이전트
 
-### Phase 2: Hugging Face 활용
-```python
-from transformers import AutoModelForCausalLM, AutoTokenizer
-
-# Qwen2-1.5B 모델 (코딩 작업용)
-model = AutoModelForCausalLM.from_pretrained("Qwen/Qwen2-1.5B")
-```
-
-### Phase 3: Fine-tuning with LoRA
-```python
-# 효율적인 fine-tuning
-from peft import LoraConfig, get_peft_model
-
-# 4-bit quantization + LoRA
-# 7B 모델도 일반 GPU에서 학습 가능
-```
-
-### Phase 4: RAG 시스템 구축
-```python
-# 나만의 지식 베이스 연동
-from langchain import Qwen2LLM
-from langchain.vectorstores import Chroma
-
-# PDF, 노트, 코드 → Vector DB → Qwen
-```
-
-## 📁 프로젝트 구조
+## 프로젝트 구조
 
 ```
 llm_practice/
-├── 01_ollama/
-│   ├── basic_chat.py        # 기본 대화
-│   ├── streaming.py         # 스트리밍 응답
-│   └── api_server.py        # REST API 서버
+├── 01_ollama/          # Ollama + Qwen3 기초
+│   ├── setup.md       # Qwen3 설치 가이드
+│   └── basic_chat.py  # 기본 대화 구현
 │
-├── 02_huggingface/
-│   ├── inference.py         # 추론 최적화
-│   ├── quantization.py      # 4-bit, 8-bit 양자화
-│   └── batch_processing.py  # 배치 처리
+├── 02_langchain/       # LangChain 활용
+│   ├── basic_setup.py       # 기본 체인 구성
+│   └── prompt_templates.py  # 프롬프트 엔지니어링
 │
-├── 03_fine_tuning/
-│   ├── prepare_data.py      # 데이터 준비
-│   ├── lora_training.py     # LoRA 학습
-│   └── merge_weights.py     # 가중치 병합
+├── 03_embeddings/      # 임베딩과 벡터 검색
+│   └── embedding_basics.py  # 임베딩 기초
 │
-└── 04_rag_system/
-    ├── document_loader.py   # 문서 로딩
-    ├── vector_store.py      # 벡터 DB
-    └── rag_chat.py          # RAG 챗봇
+├── 04_rag_basics/      # RAG 시스템
+│   └── simple_rag.py        # RAG 파이프라인
+│
+├── 05_fine_tuning/     # 파인튜닝
+│   └── lora_finetuning.py   # LoRA 파인튜닝
+│
+└── 06_agents/          # AI 에이전트
+    └── autonomous_agents.py  # ReAct 에이전트
 ```
 
-## 🚀 실습 스케줄
+## 커리큘럼
 
-### Day 1-2: Ollama + Qwen 기초
-- 로컬 실행 환경 구축
-- 다양한 모델 크기 비교
-- Prompt engineering 실습
+### 📅 Week 1: 기초 세팅
+- [x] Ollama 설치 및 Qwen3 모델 설정
+- [x] Thinking Mode를 활용한 심층 추론
+- [x] 기본 API 호출 및 대화 구현
 
-### Day 3-4: Hugging Face 생태계
-- 모델 로딩 최적화
-- Quantization (메모리 절약)
-- Batch inference
+### 🔗 Week 2: 프레임워크 활용
+- [x] LangChain 기본 체인 구성
+- [x] 프롬프트 템플릿과 Few-shot Learning
+- [x] 임베딩과 의미 검색
 
-### Day 5-6: Fine-tuning
-- 커스텀 데이터셋 준비
-- LoRA/QLoRA 학습
-- 학습 모니터링
+### 🎯 Week 3: RAG & 파인튜닝
+- [x] 벡터 DB와 문서 검색
+- [x] RAG 파이프라인 구축
+- [x] LoRA로 효율적 파인튜닝
 
-### Day 7: RAG 시스템
-- 문서 임베딩
-- 벡터 검색
-- Context-aware 응답
+### 🤖 Week 4: 에이전트 개발
+- [x] ReAct 프레임워크 구현
+- [x] 도구 사용과 메모리 관리
+- [x] 다중 에이전트 시스템
 
-## 💡 실무 활용 예시
+## 설치 가이드
 
-### 1. 코드 리뷰 봇
+### 1️⃣ 기본 패키지 설치
+```bash
+# 필수 패키지
+pip install langchain langchain-community
+pip install sentence-transformers
+pip install chromadb
+pip install peft transformers
+```
+
+### 2️⃣ Ollama 설치
+```bash
+# macOS
+brew install ollama
+
+# Linux
+curl -fsSL https://ollama.ai/install.sh | sh
+
+# Windows (WSL2 권장)
+```
+
+### 3️⃣ Qwen3 모델 다운로드
+```bash
+# Qwen3 최신 모델 (Thinking Mode 지원)
+ollama pull qwen3:8b
+ollama pull qwen3:30b-a3b  # MoE 모델 (선택)
+
+# 실행 테스트
+ollama run qwen3:8b
+```
+
+## 빠른 시작
+
+### 기본 대화
 ```python
-# 코드 분석 및 개선 제안
-def review_code(code: str):
-    prompt = f"Review this code and suggest improvements:\n{code}"
-    return qwen_model.generate(prompt)
+# 01_ollama/basic_chat.py
+from QwenChat import QwenChat
+
+chat = QwenChat(model="qwen3:8b")
+response = chat.chat("What is machine learning?")
+print(response)
 ```
 
-### 2. 문서 요약기
+### Thinking Mode 활용
 ```python
-# 긴 문서 → 핵심 요약
-def summarize_document(doc: str):
-    prompt = f"Summarize in 3 bullet points:\n{doc}"
-    return qwen_model.generate(prompt)
+# Qwen3의 특별 기능
+response = chat.chat(
+    "피보나치 수열의 10번째 항을 구해주세요",
+    thinking_mode=True  # 심층 추론 활성화
+)
 ```
 
-### 3. SQL 생성기
-```python
-# 자연어 → SQL 쿼리
-def text_to_sql(question: str, schema: str):
-    prompt = f"Schema: {schema}\nQuestion: {question}\nSQL:"
-    return qwen_model.generate(prompt)
+## 학습 자료
+
+- [📖 Qwen3 공식 문서](https://qwenlm.github.io/blog/qwen3/)
+- [🦙 Ollama 공식 사이트](https://ollama.ai/)
+- [🔗 LangChain 튜토리얼](https://python.langchain.com/)
+- [🎆 LoRA 논문](https://arxiv.org/abs/2106.09685)
+- [🤔 ReAct 프레임워크](https://arxiv.org/abs/2210.03629)
+
+## 실습 환경
+
+- **OS**: macOS/Linux/Windows (WSL2)
+- **Python**: 3.9+
+- **GPU**: 선택사항 (CPU로도 가능)
+- **RAM**: 8GB+ 권장 (16GB 추천)
+- **저장공간**: 10GB+ (모델 크기에 따라 상이)
+
+## 트러블슈팅
+
+### Ollama 연결 오류
+```bash
+# Ollama 서비스 시작
+ollama serve
+
+# 또는 백그라운드 실행
+ollama serve &
 ```
 
-## 🎓 학습 목표 체크리스트
+### 메모리 부족
+```bash
+# 더 작은 모델 사용
+ollama pull qwen3:4b
 
-- [ ] Ollama로 로컬 LLM 실행
-- [ ] Streaming response 구현
-- [ ] 4-bit quantization으로 메모리 최적화
-- [ ] LoRA fine-tuning 실행
-- [ ] Custom dataset 준비
-- [ ] RAG 시스템 구축
-- [ ] 실제 업무 적용 사례 1개 구현
-
-## 📈 성능 벤치마크
-
-| 모델 | 크기 | 메모리 | 속도 | 품질 | 용도 |
-|------|------|--------|------|------|------|
-| Qwen2-0.5B | 0.5B | 1GB | 매우빠름 | 보통 | 테스트, 간단작업 |
-| Qwen2-1.5B | 1.5B | 3GB | 빠름 | 좋음 | 코딩, 번역 |
-| Qwen2-7B | 7B | 14GB | 보통 | 매우좋음 | 전문작업 |
-| Qwen2-72B | 72B | 140GB | 느림 | 최고 | 연구, 고급작업 |
-
-## 🔍 Week 3 Preview: 나만의 메모 비서
-
-```python
-# 내 노트 + Qwen = 개인 AI 비서
-class PersonalAssistant:
-    def __init__(self):
-        self.model = load_qwen_model()
-        self.notes = load_my_notes()
-        self.vector_db = create_vector_store(self.notes)
-    
-    def answer(self, question):
-        # 1. 관련 노트 검색
-        context = self.vector_db.search(question)
-        # 2. Qwen으로 답변 생성
-        return self.model.generate_with_context(question, context)
+# 또는 양자화 모델
+ollama pull qwen3:8b-q4_0
 ```
 
-준비되셨나요? 실습을 시작해볼까요?
+## 기여
+
+문제가 발생하거나 개선 사항이 있으면 Issues에 등록해주세요.
+
+## 라이선스
+
+MIT License
