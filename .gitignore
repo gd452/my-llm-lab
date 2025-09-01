@@ -34,3 +34,7 @@ Thumbs.db
 *.pth
 checkpoints/
 outputs/
+
+# uv
+.python-version
+uv.lock
